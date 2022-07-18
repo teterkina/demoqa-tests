@@ -32,6 +32,7 @@ public class AutomationPracticeFormTests {
         $(byClassName("react-datepicker__day--025")).click();
         $(byId("subjectsInput")).setValue("Che");
         $(byText("Chemistry")).click();
+        $("#uploadPicture").uploadFromClasspath("hello.txt");
         $(byText("Reading")).click();
         $("#currentAddress").setValue("Cyprus");
         $(byId("stateCity-wrapper")).scrollIntoView(true).click();
@@ -41,17 +42,17 @@ public class AutomationPracticeFormTests {
         $("#submit").click();
 
         $(byClassName("modal-content")).shouldBe(visible);
-
-        $("#firstName").shouldHave(text("Alina"));
-        $("#lastName").shouldHave(text("Teterkina"));
-        $("#userEmail").shouldHave(text("test@email.com"));
-        $("#output #currentAddress").shouldHave(text("Female"));
-        $("#userNumber").shouldHave(text("357600128"));
-        $("#dateOfBirthInput").shouldBe(visible);
-//        $(byText().shouldHave(text("Chemistry"));
-//        $(byText().shouldHave(text("Reading"));
-        $("#currentAddress").shouldHave(text("Cyprus"));
-        $("#output #permanentAddress").shouldHave(text("Another address"));
+        $(byClassName("table-responsive")).shouldHave(text("Student Name Alina Teterkina"),
+                text("Student Email test@email.com" ),
+                text("Gender Female"),
+                text("Mobile 3576001288"),
+                text("Date of Birth 25 June,1991"),
+                text("Subjects Chemistry"),
+                text("Hobbies Reading"),
+                text("Picture hello.txt"),
+                text("Address Cyprus"),
+                text("State and City NCR Delhi")
+        );
     }
 }
 
